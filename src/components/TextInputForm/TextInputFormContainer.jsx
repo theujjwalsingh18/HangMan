@@ -21,14 +21,15 @@ function TextInputFormContainer() {
 
         const secretWord = value.trim();
         const hint = hintText.trim();
-        const charRegex  = /^[a-zA-Z]+$/;
+        const wordRegex = /^[a-zA-Z]+$/;
+        const hintRegex = /^[a-zA-Z\s]+$/; 
 
         if (!secretWord) {
             warningToast("Please enter the secret word or phrase to start the game.");
             return;
         }
 
-        if (!charRegex.test(secretWord)) {
+        if (!wordRegex.test(secretWord)) {
             errorToast("The secret word/phrase can only contain letters.");
             return;
         }
@@ -37,7 +38,7 @@ function TextInputFormContainer() {
             return;
         }
 
-        if (!charRegex.test(hint)) {
+        if (!hintRegex.test(hint)) {
             warningToast("The hint can only contain letters and spaces.");
             return;
         }
